@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* TIPOGRAFÍAS DE FUSIÓN CRIOLLO - ANDINO */
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-title: "Playfair Display", "Outfit", serif;   /* Elegante rústico para títulos */
+  --font-category: "Fredoka", "Outfit", sans-serif;   /* Tipografía limpia para categorías */
+  --font-dish: "Outfit", sans-serif;                  /* Tipografía para Platos y Precios */
+  --font-slogan: "Outfit", sans-serif;                /* Tipografía para Eslogans/Marquee */
+  
+  /* COLORES FUSIÓN CRIOLLO - ANDINO */
+  --color-primary: #B8321A;      /* Terracota / Rojo Criollo */
+  --color-secondary: #D97706;    /* Oro / Ámbar Andino */
+  --color-dark: #1C1917;         /* Negro Cálido / Carbón */
+  --color-light: #FAF6F0;        /* Crema / Marfil Cálido */
+  
+  --shadow-glass: 0 12px 36px 0 rgba(184, 50, 26, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.6);
+}
+
+body {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* Custom scrollbar hide */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Wave decoration for sections */
+@keyframes wave {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
+}
+
+.wave-icon {
+  animation: wave 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Category header underline animation */
+.category-underline {
+  position: relative;
+}
+
+.category-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 2px;
+}
